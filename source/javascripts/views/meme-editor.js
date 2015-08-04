@@ -20,10 +20,6 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
-    if (d.textShadowEdit) {
-      $('#text-shadow').parent().show();
-    }
-
     // Build text alignment options:
     if (d.textAlignOpts && d.textAlignOpts.length) {
       $('#text-align').append(buildOptions(d.textAlignOpts)).show();
@@ -32,11 +28,6 @@ MEME.MemeEditorView = Backbone.View.extend({
     // Build font size options:
     if (d.fontSizeOpts && d.fontSizeOpts.length) {
       $('#font-size').append(buildOptions(d.fontSizeOpts)).show();
-    }
-
-    // Build font family options:
-    if (d.fontFamilyOpts && d.fontFamilyOpts.length) {
-      $('#font-family').append(buildOptions(d.fontFamilyOpts)).show();
     }
 
     // Build watermark options:

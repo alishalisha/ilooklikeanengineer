@@ -72,6 +72,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
     }
 
+    function renderSubhed(ctx) {
+      x = 95;
+      y = (d.height / 2);
+      var sub = 'because I am one.';
+      ctx.textAlign = 'left';
+      ctx.font='14px' + '"Source Sans Pro"';
+      ctx.fillText(sub, x, y);
+    }
+
     function renderHeadline(ctx) {
       var maxWidth = Math.round(d.width * 0.75);
       var x = padding;
@@ -81,19 +90,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.fillStyle = d.fontColor;
       ctx.textBaseline = 'top';
 
-      // Text shadow:
-      if (d.textShadow) {
-        ctx.shadowColor = "#666";
-        ctx.shadowOffsetX = -2;
-        ctx.shadowOffsetY = 1;
-        ctx.shadowBlur = 10;
-      }
-
       // Text alignment:
-      if (d.textAlign == 'center') {
-        ctx.textAlign = 'center';
-        x = d.width / 2;
-        y = d.height - d.height / 1.5;
+      if (d.textAlign == 'left') {
+        ctx.textAlign = 'left';
+        x = 20;
+        y = (d.height / 2) - 50;
         maxWidth = d.width - d.width / 3;
 
       } else if (d.textAlign == 'right' ) {
@@ -127,10 +128,17 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     function renderCredit(ctx) {
       ctx.textBaseline = 'bottom';
-      ctx.textAlign = 'left';
+      ctx.textAlign = 'center';
       ctx.fillStyle = d.fontColor;
       ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
-      ctx.fillText(d.creditText, padding, d.height - padding);
+      x = d.width / 2;
+      y = 360;
+      ctx.fillText(d.creditText, x, y);
+    }
+
+    function drawRectangle(ctx) {
+      ctx.fillStyle = "#FF775B";
+      ctx.fillRect(0,0,300,d.height);
     }
 
     function renderWatermark(ctx) {
@@ -156,9 +164,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     renderBackground(ctx);
-    renderOverlay(ctx);
+    drawRectangle(ctx);
     renderHeadline(ctx);
-    renderCredit(ctx);
+    renderSubhed(ctx);
     renderWatermark(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
