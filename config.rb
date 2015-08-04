@@ -36,6 +36,7 @@ configure :build do
   activate :minify_css
 end
 
+# oops
 activate :deploy do |deploy|
   deploy.method = :git
   deploy.branch = 'gh-pages'
