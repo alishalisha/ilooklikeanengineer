@@ -42,3 +42,20 @@ body.noselect {
 .cf {
     *zoom: 1;
 }
+
+.btn-default {
+    background: $theme-color;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    @include transition (background-color ease-in-out 0.3s);
+
+    &:hover {
+      background: lighten($theme-color, 25);
+    }
+}

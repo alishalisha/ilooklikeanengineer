@@ -5,4 +5,5 @@
 //= require "models/meme"
 //= require "views/meme-canvas"
 //= require "views/meme-editor"
+//= require "views/webcam"
 //= require "helpers/font-monitor"
