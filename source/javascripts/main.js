@@ -20,6 +20,13 @@ MEME = {
       model: this.model
     });
 
+    // Create the webcam view:
+    this.webcam = new this.WebcamView({
+        el: '#webcam-view',
+        canvas: this.canvas,
+        model: this.model
+    });
+
     // Re-render view after all fonts load:
     this.waitForFonts().then(function() {
       MEME.render();

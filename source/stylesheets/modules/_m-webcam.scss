@@ -1,0 +1,9 @@
+$m: '.m-webcam';
+
+#{$m} {
+  margin-bottom: 30px;
+
+  video {
+    display: none;
+  }
+}
