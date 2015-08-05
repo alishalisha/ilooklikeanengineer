@@ -32,7 +32,8 @@ MEME.WebcamView = Backbone.View.extend({
     },
 
     events: {
-        'click #use-webcam': 'startWebcam'
+        'click #use-webcam': 'startWebcam',
+        'click #take-snapshot': 'takeSnapshot'
     },
 
     startWebcam: function () {
@@ -56,15 +57,28 @@ MEME.WebcamView = Backbone.View.extend({
                     video.width = video.videoWidth;
                     model.background = video;
                 }
-                canvas.render();
+                if (!model.get('snapshot')) {
+                    canvas.render();
+                }
                 setTimeout(startVideoRender, 50);
             };
 
             video.onplay = startVideoRender;
 
-            MEME.$('#use-webcam, .dropzone').hide();
+            MEME.$('#use-webcam, .dropzone').addClass('hide');
+            MEME.$('#take-snapshot').removeClass('hide');
     	}, function(err) {
     		console.err('Error getting webcam stream', err);
     	});
+    },
+
+    takeSnapshot: function() {
+        var enable = !this.model.get('snapshot');
+        if (enable) {
+            MEME.$('#take-snapshot').text('Let\'s try again');
+        } else {
+            MEME.$('#take-snapshot').text('Take a snapshot');
+        }
+        this.model.set('snapshot', enable);
     }
 });
