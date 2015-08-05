@@ -36,6 +36,9 @@ configure :build do
   activate :minify_css
 end
 
+# let asset pipeline be relative
+activate :relative_assets
+
 # oops
 activate :deploy do |deploy|
   deploy.method = :git

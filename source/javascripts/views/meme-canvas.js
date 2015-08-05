@@ -73,11 +73,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderSubhed(ctx) {
-      x = 95;
-      y = (d.height / 2);
+      x = 75;
+      y = (d.height / 2) - 10;
       var sub = 'because I am one.';
       ctx.textAlign = 'left';
-      ctx.font='14px' + '"Source Sans Pro"';
+      ctx.font='400 21px "Source Sans Pro"';
       ctx.fillText(sub, x, y);
     }
 
@@ -86,7 +86,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var x = padding;
       var y = padding;
 
-      ctx.font = d.fontSize +'pt '+ d.fontFamily;
+      ctx.font='600 27px "Source Sans Pro"';
+      //ctx.font = d.fontSize +'pt '+ d.fontFamily;
       ctx.fillStyle = d.fontColor;
       ctx.textBaseline = 'top';
 
