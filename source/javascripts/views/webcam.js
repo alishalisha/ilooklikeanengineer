@@ -65,7 +65,7 @@ MEME.WebcamView = Backbone.View.extend({
 
             video.onplay = startVideoRender;
 
-            MEME.$('#use-webcam').addClass('hide');
+            MEME.$('#use-webcam dropzone').addClass('hide');
             MEME.$('#take-snapshot').removeClass('hide');
     	}, function(err) {
     		console.err('Error getting webcam stream', err);
